@@ -9,8 +9,17 @@
 </head>
 
 <body>
+    <h2>Output for our Task 3</h2>
+    <p>By comparing resource list and task list, the missing resources are:</p>
+    <div id="output"></div>
+    <p>&&</p>
+    <div id="output2"></div>
+    <br />
+
+    <b>Note: Please check the console for details</b>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
+        let missingResourceType = [];
         $.ajax({
             type: 'GET',
             url: './Resource_List_Data.json',
@@ -26,6 +35,7 @@
                 let unique = [...new Set(array)];
                 let difference = unique.filter((x) => !standard.includes(x));
                 console.log(difference);
+                $('#output2').text(difference);
             },
         });
 
@@ -43,8 +53,12 @@
                 let unique2 = [...new Set(array3)];
                 let difference2 = unique2.filter((x) => !standard.includes(x));
                 console.log(difference2);
+
+                $('#output').text(difference2);
             },
         });
+
+        // console.log('Missing Type ' + missingResourceType);
     </script>
 </body>
 
